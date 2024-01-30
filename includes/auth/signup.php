@@ -20,20 +20,37 @@
          // 4.3 - make sure the password length is at least 8 chars
          setError( "Your password must be at least 8 characters", '/signup' );
     } else {
-         // step 5: create the user account
-             // 5.1 - sql command (recipe)
+        // Step 5: make sure email entered does not exist yet
+        $sql= "SELECT * FROM users where email = :email";
+        $query = $database -> prepare ($sql);
+        $query -> execute([
+          "email"=>$email
+        ]);
+        $user = $query->fetch(); // get only one row to data
+
+        if (empty($user)) {
+          // step 6: create the user account
+             // 6.1 - sql command (recipe)
              $sql = "INSERT INTO users (`name`,`email`,`password`) VALUES (:name, :email, :password)";
-             // 5.2 - prepare (put everything into th bowl)
+             // 6.2 - prepare (put everything into th bowl)
              $query = $database->prepare( $sql );
-             // 5.3 - execute (cook it)
+             // 6.3 - execute (cook it)
              $query->execute([
                  'name' => $name,
                  'email' => $email,
                  'password' => password_hash( $password, PASSWORD_DEFAULT )
              ]);
- 
-         // Step 6: redirect back to login
+
+          // Step 7: redirect back to login
+          // set success message
+            $_SESSION["success"] = "Account has been created successfully. Please login with your email & password.";
          header("Location: /login");
          exit;
+        }else {
+          setError("The email is already taken.","/signup");
+        }
+         
+ 
+         
  
     }

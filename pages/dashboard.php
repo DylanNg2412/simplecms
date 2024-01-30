@@ -19,6 +19,10 @@
             </div>
           </div>
         </div>
+        <!--Manage User-->
+        <?php
+         if (isset ($_SESSION["user"]['role']) && $_SESSION["user"]['role'] === 'admin'):
+        ?>
         <div class="col">
           <div class="card mb-2">
             <div class="card-body">
@@ -35,7 +39,8 @@
               </div>
             </div>
           </div>
-        </div>
+        </div><!--end col-->
+        <?php endif; ?>
       </div>
       <div class="mt-4 text-center">
         <a href="/home" class="btn btn-link btn-sm"

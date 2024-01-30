@@ -46,9 +46,12 @@
        //redirect bac to log in page 
      } else {
        // 5.3 - make sure the password is correct
-       if (( $password == $user["password"] ) ) {
+       if (password_verify( $password, $user ["password"] ) ) {
          // 5.4 - if password is valid, login the user
          $_SESSION["user"] = $user;
+
+         // set success message
+         $_SESSION["success"] = "Welcome back, " . $user['name'] .  "! How can I help you today?";
 
          // Step 6: redirect back to home page
          header("Location: /");

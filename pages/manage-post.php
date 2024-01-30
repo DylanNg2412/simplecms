@@ -26,13 +26,13 @@
               <td class="text-end">
                 <div class="buttons">
                   <a
-                    href="post.html"
+                    href="/post"
                     target="_blank"
                     class="btn btn-primary btn-sm me-2 disabled"
                     ><i class="bi bi-eye"></i
                   ></a>
                   <a
-                    href="manage-posts-edit.html"
+                    href="/manage-posts-edit"
                     class="btn btn-secondary btn-sm me-2"
                     ><i class="bi bi-pencil"></i
                   ></a>
@@ -49,13 +49,13 @@
               <td class="text-end">
                 <div class="buttons">
                   <a
-                    href="post.html"
+                    href="/post"
                     target="_blank"
                     class="btn btn-primary btn-sm me-2"
                     ><i class="bi bi-eye"></i
                   ></a>
                   <a
-                    href="manage-posts-edit.html"
+                    href="/manage-posts-edit"
                     class="btn btn-secondary btn-sm me-2"
                     ><i class="bi bi-pencil"></i
                   ></a>
@@ -72,13 +72,13 @@
               <td class="text-end">
                 <div class="buttons">
                   <a
-                    href="post.html"
+                    href="/post"
                     target="_blank"
                     class="btn btn-primary btn-sm me-2"
                     ><i class="bi bi-eye"></i
                   ></a>
                   <a
-                    href="manage-posts-edit.html"
+                    href="/manage-posts-edit"
                     class="btn btn-secondary btn-sm me-2"
                     ><i class="bi bi-pencil"></i
                   ></a>
@@ -95,13 +95,13 @@
               <td class="text-end">
                 <div class="buttons">
                   <a
-                    href="post.html"
+                    href="/post"
                     target="_blank"
                     class="btn btn-primary btn-sm me-2"
                     ><i class="bi bi-eye"></i
                   ></a>
                   <a
-                    href="manage-posts-edit.html"
+                    href="/manage-posts-edit"
                     class="btn btn-secondary btn-sm me-2"
                     ><i class="bi bi-pencil"></i
                   ></a>
@@ -118,13 +118,13 @@
               <td class="text-end">
                 <div class="buttons">
                   <a
-                    href="post.html"
+                    href="/post"
                     target="_blank"
                     class="btn btn-primary btn-sm me-2"
                     ><i class="bi bi-eye"></i
                   ></a>
                   <a
-                    href="manage-posts-edit.html"
+                    href="/manage-posts-edit"
                     class="btn btn-secondary btn-sm me-2"
                     ><i class="bi bi-pencil"></i
                   ></a>
