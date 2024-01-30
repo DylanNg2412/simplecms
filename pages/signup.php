@@ -65,10 +65,10 @@
       <div
         class="d-flex justify-content-between align-items-center gap-3 mx-auto pt-3"
       >
-        <a href="index.html" class="text-decoration-none small"
+        <a href="/home" class="text-decoration-none small"
           ><i class="bi bi-arrow-left-circle"></i> Go back</a
         >
-        <a href="login.html" class="text-decoration-none small"
+        <a href="/login" class="text-decoration-none small"
           >Already have an account? Login here
           <i class="bi bi-arrow-right-circle"></i
         ></a>
