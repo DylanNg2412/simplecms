@@ -3,7 +3,7 @@
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h1 class="h1">Manage Posts</h1>
         <div class="text-end">
-          <a href="manage-posts-add.html" class="btn btn-primary btn-sm"
+          <a href="/manage-posts-add" class="btn btn-primary btn-sm"
             >Add New Post</a
           >
         </div>
@@ -138,7 +138,7 @@
         </table>
       </div>
       <div class="text-center">
-        <a href="dashboard.html" class="btn btn-link btn-sm"
+        <a href="/dashboard" class="btn btn-link btn-sm"
           ><i class="bi bi-arrow-left"></i> Back to Dashboard</a
         >
       </div>

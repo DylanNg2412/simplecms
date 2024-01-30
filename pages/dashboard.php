@@ -29,7 +29,7 @@
                 Manage Users
               </h5>
               <div class="text-center mt-3">
-                <a href="manage-users.html" class="btn btn-primary btn-sm"
+                <a href="/manage-users" class="btn btn-primary btn-sm"
                   >Access</a
                 >
               </div>
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="mt-4 text-center">
-        <a href="index.html" class="btn btn-link btn-sm"
+        <a href="/home" class="btn btn-link btn-sm"
           ><i class="bi bi-arrow-left"></i> Back</a
         >
       </div>
