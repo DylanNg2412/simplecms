@@ -4,7 +4,7 @@
 
       <div class="card p-4">
       <?php require "parts/error_box.php"; ?>
-      <?php require "parts/success_box.php"; ?>
+      
         <form method="POST" action="/auth/login">
           <div class="mb-2">
             <label for="email" class="visually-hidden">Email</label>
