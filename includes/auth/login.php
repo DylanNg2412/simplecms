@@ -1,17 +1,6 @@
 <?php
 
-  $host = 'devkinsta_db';
-  $database_name = 'SimpleCMS';
-  $database_user = 'root';
-  $database_password = 'sU3R6Rm2wtOI8xQA';
-
-$database = new PDO(
-  "mysql:host=$host;
-  dbname=$database_name",
-  $database_user,
-  $database_password
-);
-
+ $database = connectToDB();
 
 
 //  if (isset($_POST["login_submit"])){
