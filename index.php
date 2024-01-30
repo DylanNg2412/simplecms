@@ -8,6 +8,8 @@
 
   // get the current path the user is on
   $path = $_SERVER["REQUEST_URI"];
+  //remove all the query string from the URL
+  $path = parse_url( $path, PHP_URL_PATH);
   // trim out the beginning slash
   $path = trim( $path, '/' );
 
@@ -78,4 +80,10 @@
     case 'user/add':
       require "includes/user/add.php";
       break;
+    case 'user/update':
+      require "includes/user/update.php";
+      break;
+    case 'user/delete':
+      require "includes/user/delete.php";
+      break;    
   }

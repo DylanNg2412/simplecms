@@ -46,7 +46,7 @@
 
         // Step 6: redirect back to login
         // set success message
-          $_SESSION["success"] = "Account has been created successfully.";
+          $_SESSION["success"] = "A new account has been created successfully.";
        header("Location: /manage-users");
        exit;
       }else {

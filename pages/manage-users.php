@@ -5,7 +5,7 @@
 
  //get all the users
  // 1. sql command
- $sql = "SELECT * from users";
+ $sql = "SELECT * from users ORDER BY id DESC";
  // 2. prepare 
  $query = $database -> prepare($sql);
  // 3. execute
@@ -25,6 +25,7 @@
         </div>
       </div>
       <div class="card mb-2 p-4">
+      <?php require "parts/success_box.php"; ?>
         <table class="table">
           <thead>
             <tr>
@@ -59,7 +60,7 @@
               <td class="text-end">
                 <div class="buttons">
                   <a
-                    href="/manage-users-edit"
+                    href="/manage-users-edit?id=<?= $user["id"]; ?>"
                     class="btn btn-success btn-sm me-2"
                     ><i class="bi bi-pencil"></i
                   ></a>
@@ -68,9 +69,21 @@
                     class="btn btn-warning btn-sm me-2"
                     ><i class="bi bi-key"></i
                   ></a>
-                  <a href="#" class="btn btn-danger btn-sm"
-                    ><i class="bi bi-trash"></i
-                  ></a>
+                  <!--Delete Button-->
+                  <form 
+                   method="POST" 
+                   action="/user/delete" 
+                   class="d-inline-block">
+                    <!-- hidden input for user's id-->
+                    
+                  <input 
+                  type="hidden"
+                  name="id"
+                  value="<?= $user["id"]; ?>" />
+                  <button class="btn btn-danger btn-sm">
+                  <i class="bi bi-trash"></i>
+                  </button>                  
+                  </form>                  
                 </div>
               </td>
             </tr>
@@ -79,7 +92,7 @@
         </table>
       </div>
       <div class="text-center">
-      <?php require "parts/success_box.php"; ?>
+      
         <a href="/dashboard" class="btn btn-link btn-sm"
           ><i class="bi bi-arrow-left"></i> Back to Dashboard</a
         >
