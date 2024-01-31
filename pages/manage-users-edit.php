@@ -31,7 +31,7 @@
         <h1 class="h1">Edit User</h1>
       </div>
       <div class="card mb-2 p-4">
-        <?= require "parts/error_box.php"; ?>
+        <?php require "parts/error_box.php"; ?>
         <form 
           method="POST" 
           action="/user/update"> 
