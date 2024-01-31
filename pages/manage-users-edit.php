@@ -1,5 +1,18 @@
 <?php
 
+  //make sure the user is logged in
+ if (!isUserLoggedIn()) {
+  header("Location: /login");
+  exit;
+ }
+
+ // make sure only admin can see this page
+ if( !isAdmin()){
+  // if is not admin, then redirect the user back to /dashboard
+  header("Location: /dashboard");
+  exit;
+ }
+
   // load database
   $database = connectToDB();
 
@@ -69,9 +82,11 @@
           </div>
           <div class="d-grid">
             <!-- put hidden input for id -->
-
-
-          
+            <input 
+            type="hidden" 
+            name="user_id"
+            value="<?= $user["id"]; ?>" 
+            />          
             <button type="submit" class="btn btn-primary">Update</button>
           </div>
         </form>

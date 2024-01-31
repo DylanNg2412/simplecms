@@ -53,17 +53,17 @@
       $page_title = "User Password Change";
       require 'pages/manage-users-changepwd.php';
       break;
-    case 'manage-posts':
+    case 'manage-post':
       $page_title = "Manage Post";
-      require 'pages/manage-posts.php';
+      require 'pages/manage-post.php';
       break;
-    case 'manage-posts-add':
+    case 'manage-post-add':
       $page_title = "Add Post";
-      require 'pages/manage-posts-add.php';
+      require 'pages/manage-post-add.php';
       break;
-    case 'manage-posts-edit':
+    case 'manage-post-edit':
       $page_title = "Edit Post";
-      require 'pages/manage-posts-edit.php';
+      require 'pages/manage-post-edit.php';
       break;
     default:
       $page_title = "Home Page";
@@ -85,5 +85,17 @@
       break;
     case 'user/delete':
       require "includes/user/delete.php";
-      break;    
+      break;
+    case 'user/changepwd':
+      require "includes/user/changepwd.php";
+      break;
+    case 'post/add':
+      require "includes/post/add.php";
+      break; 
+    case 'post/delete':
+      require "includes/post/delete.php";
+      break;
+    case 'post/edit':
+      require "includes/post/edit.php";
+      break;
   }

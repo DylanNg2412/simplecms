@@ -1,5 +1,18 @@
 <?php
 
+ //make sure the user is logged in
+ if (!isUserLoggedIn()) {
+  header("Location: /login");
+  exit;
+ }
+
+ // make sure only admin can see this page
+ if( !isAdmin()){
+  // if is not admin, then redirect the user back to /dashboard
+  header("Location: /dashboard");
+  exit;
+ }
+
  // load database
  $database = connectToDB();
 
@@ -65,25 +78,49 @@
                     ><i class="bi bi-pencil"></i
                   ></a>
                   <a
-                    href="/manage-users-changepwd"
+                    href="/manage-users-changepwd?id=<?= $user["id"]; ?>"
                     class="btn btn-warning btn-sm me-2"
                     ><i class="bi bi-key"></i
                   ></a>
-                  <!--Delete Button-->
-                  <form 
-                   method="POST" 
-                   action="/user/delete" 
-                   class="d-inline-block">
-                    <!-- hidden input for user's id-->
-                    
-                  <input 
-                  type="hidden"
-                  name="id"
-                  value="<?= $user["id"]; ?>" />
-                  <button class="btn btn-danger btn-sm">
-                  <i class="bi bi-trash"></i>
-                  </button>                  
-                  </form>                  
+                  <!-- delete button -->
+                  <button 
+                    type="button" 
+                    class="btn btn-danger btn-sm"
+                    <?= ( $user["id"] == $_SESSION["user"]['id'] ? "disabled" : "" ); ?>
+                    data-bs-toggle="modal" 
+                    data-bs-target="#delete-user-model-<?= $user["id"]; ?>">
+                    <i class="bi bi-trash"></i>
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="delete-user-model-<?= $user["id"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5 text-start" id="exampleModalLabel">Are you sure you want to delete this user (<?= $user["email"]; ?>)?</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-start">
+                          This action cannot be reversed.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <form
+                            class="d-inline-block"
+                            method="POST"
+                            action="/user/delete"> 
+                            <!-- put hidden input for user's id -->
+                            <input 
+                              type="hidden"
+                              name="user_id"
+                              value="<?= $user["id"]; ?>"
+                              />
+                              <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </td>
             </tr>

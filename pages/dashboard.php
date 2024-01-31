@@ -12,7 +12,7 @@
                 Manage Posts
               </h5>
               <div class="text-center mt-3">
-                <a href="manage-posts.html" class="btn btn-primary btn-sm"
+                <a href="/manage-post" class="btn btn-primary btn-sm"
                   >Access</a
                 >
               </div>

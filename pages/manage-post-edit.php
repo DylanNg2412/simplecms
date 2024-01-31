@@ -5,10 +5,11 @@
         <h1 class="h1">Edit Post</h1>
       </div>
       <div class="card mb-2 p-4">
-        <form>
+        <form method = "POST" action="/post/edit">
           <div class="mb-3">
             <label for="post-title" class="form-label">Title</label>
             <input
+              name ="title"
               type="text"
               class="form-control"
               id="post-title"
@@ -28,8 +29,8 @@
           <div class="mb-3">
             <label for="post-content" class="form-label">Status</label>
             <select class="form-control" id="post-status" name="status">
-              <option value="review">Pending for Review</option>
-              <option value="publish">Publish</option>
+              <option value="Pending">Pending for Review</option>
+              <option value="Publish">Publish</option>
             </select>
           </div>
           <div class="text-end">

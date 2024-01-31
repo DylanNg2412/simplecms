@@ -30,7 +30,7 @@
         quis, sagittis posuere risus.
       </p>
       <div class="text-center mt-3">
-        <a href="/home" class="btn btn-link btn-sm"
+        <a href="/manage-post" class="btn btn-link btn-sm"
           ><i class="bi bi-arrow-left"></i> Back</a
         >
       </div>

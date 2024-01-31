@@ -26,3 +26,27 @@ function setError( $error_message, $redirect_page ) {
   header("Location: " . $redirect_page );
   exit;
 }
+
+
+
+// is user logged in ?
+function isUserLoggedIn() {
+  return isset($_SESSION["user"]);
+}
+
+// is logged in user is an admin
+function isAdmin() {
+  return isset($_SESSION["user"]['role']) && $_SESSION["user"]['role'] == 'admin';
+}
+
+
+// is logged in user is an editor
+function isEditor() {
+
+}
+
+
+// is logged in user is an normal user
+function isUser() {
+
+}
