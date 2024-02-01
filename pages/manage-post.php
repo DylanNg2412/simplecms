@@ -1,4 +1,11 @@
 <?php 
+
+//make sure the user is logged in
+if (!isUserLoggedIn()) {
+  header("Location: /login");
+  exit;
+ }
+
 // load database
 $database = connectToDB();
 
@@ -24,6 +31,7 @@ $posts = $query->fetchAll();
         </div>
       </div>
       <div class="card mb-2 p-4">
+        <?php require "parts/success_box.php"; ?>
         <table class="table">
           <thead>
             <tr>
@@ -57,7 +65,7 @@ $posts = $query->fetchAll();
                     ><i class="bi bi-eye"></i
                   ></a>
                   <a
-                    href="/manage-post-edit"
+                    href="/manage-post-edit?id=<?= $post["id"]; ?>"
                     class="btn btn-secondary btn-sm me-2"
                     ><i class="bi bi-pencil"></i
                   ></a>

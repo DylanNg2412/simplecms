@@ -1,3 +1,10 @@
+<?php 
+
+  if (!isUserLoggedIn()) {
+    header("Location: /login");
+    exit;
+  }
+?>
 <?php require "parts/header.php"; ?>
     <div class="container mx-auto my-5" style="max-width: 700px;">
       <div class="d-flex justify-content-between align-items-center mb-2">

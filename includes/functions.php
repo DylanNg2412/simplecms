@@ -36,17 +36,21 @@ function isUserLoggedIn() {
 
 // is logged in user is an admin
 function isAdmin() {
-  return isset($_SESSION["user"]['role']) && $_SESSION["user"]['role'] == 'admin';
+  return isset($_SESSION["user"]['role']) && $_SESSION["user"]['role'] === 'admin';
 }
 
+// is logged in user is an admin or an editor
+function isAdminOrEditor() {
+  return isset($_SESSION["user"]['role']) && ($_SESSION["user"]['role'] === 'admin'|| $_SESSION["user"]['role'] === 'admin');
+}
 
 // is logged in user is an editor
 function isEditor() {
-
+  return isset($_SESSION["user"]['role']) && $_SESSION["user"]['role'] === 'editor';
 }
 
 
 // is logged in user is an normal user
 function isUser() {
-
+  return isset($_SESSION["user"]['role']) && $_SESSION["user"]['role'] === 'user';
 }
