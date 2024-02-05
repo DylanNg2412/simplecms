@@ -30,6 +30,7 @@
         <h1 class="h1">Edit Post</h1>
       </div>
       <div class="card mb-2 p-4">
+        <?php require "parts/error_box.php"; ?>
         <form method = "POST" action="/post/edit">
           <div class="mb-3">
             <label for="post-title" class="form-label">Title</label>
@@ -43,16 +44,14 @@
           </div>
           <div class="mb-3">
             <label for="post-content" class="form-label">Content</label>
-            <textarea class="form-control" id="post-content" rows="10" name="content">
-              <?= $post["content"]; ?>
-            </textarea>
+            <textarea class="form-control" id="post-content" rows="10" name="content"><?= $post["content"]; ?></textarea>
           </div>
           <div class="mb-3">
             <label for="post-content" class="form-label">Status</label>
             <select class="form-control" id="post-status" name="status">
-              <option value="pending">Pending</option>
+            <option value="pending" <?= $post["status"] === 'pending' ? "selected" : "" ?>>Pending</option>
               <?php if (isAdminOrEditor()) : ?>
-              <option value="publish">Publish</option>
+                <option value="publish" <?= $post["status"] === 'publish' ? "selected" : "" ?>>Publish</option>
               <?php endif ; ?>
             </select>
           </div>

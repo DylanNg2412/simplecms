@@ -10,14 +10,27 @@ if (!isUserLoggedIn()) {
 $database = connectToDB();
 
 //get all the users
-// 1. sql command
-$sql = "SELECT * from posts ORDER BY id DESC";
-// 2. prepare 
-$query = $database -> prepare($sql);
-// 3. execute
-$query -> execute();
-// 4. fetchAll
-$posts = $query->fetchAll();
+if(isAdminOrEditor ()) {
+  // 1. sql command
+  $sql = "SELECT * from posts ORDER BY id DESC"; // order by ID DESC
+  // 2. prepare 
+  $query = $database -> prepare($sql);
+  // 3. execute
+  $query -> execute();
+  // 4. fetchAll
+  $posts = $query->fetchAll();
+}else{
+  // 1. sql command
+  $sql = "SELECT * from posts WHERE user_id = :user_id ORDER BY id DESC"; // order by ID DESC
+  // 2. prepare
+  $query = $database->prepare( $sql );
+  // 3. execute
+  $query->execute([
+    "user_id" => $_SESSION["user"]['id']
+  ]);
+  $posts = $query->fetchAll();
+}
+
 ?>
 
 <?php require "parts/header.php"; ?>
@@ -59,9 +72,9 @@ $posts = $query->fetchAll();
               <td class="text-end">
                 <div class="buttons">
                   <a
-                    href="/post"
+                    href="/post?id=<?= $post["id"]; ?>"
                     target="_blank"
-                    class="btn btn-primary btn-sm me-2"
+                    class="btn btn-primary btn-sm me-2 <?= ( $post["status"] === 'pending' ? 'disabled' : '' ); ?>"
                     ><i class="bi bi-eye"></i
                   ></a>
                   <a
