@@ -9,10 +9,18 @@ if (!isUserLoggedIn()) {
 // load database
 $database = connectToDB();
 
+$id = isset( $_GET ["id"]) ?  $_GET["id"] : "";
+
 //get all the users
 if(isAdminOrEditor ()) {
   // 1. sql command
-  $sql = "SELECT * from posts ORDER BY id DESC"; // order by ID DESC
+  $sql = "SELECT 
+    posts.*,
+    users.name AS user_name
+    FROM posts 
+    JOIN users
+    ON posts.user_id = users.id    
+    ORDER BY id DESC";
   // 2. prepare 
   $query = $database -> prepare($sql);
   // 3. execute
@@ -21,12 +29,19 @@ if(isAdminOrEditor ()) {
   $posts = $query->fetchAll();
 }else{
   // 1. sql command
-  $sql = "SELECT * from posts WHERE user_id = :user_id ORDER BY id DESC"; // order by ID DESC
+  $sql = "SELECT 
+    posts.*,
+    users.name AS user_name
+    FROM posts 
+    JOIN users
+    ON posts.user_id = users.id
+    WHERE user_id = :user_id 
+    ORDER BY id DESC";
   // 2. prepare
   $query = $database->prepare( $sql );
   // 3. execute
   $query->execute([
-    "user_id" => $_SESSION["user"]['id']
+    "user_id" => $_SESSION["user"]['id'],
   ]);
   $posts = $query->fetchAll();
 }
@@ -51,6 +66,7 @@ if(isAdminOrEditor ()) {
               <th scope="col">ID</th>
               <th scope="col" style="width: 40%;">Title</th>
               <th scope="col">Status</th>
+              <th scope="col">Author</th>
               <th scope="col" class="text-end">Actions</th>
             </tr>
           </thead>
@@ -67,7 +83,10 @@ if(isAdminOrEditor ()) {
                 <?php if ( $post["status"] === 'publish' ) : ?>
                   <span class="badge bg-success">Publish</span>
                   <?php endif; ?>
-
+              </td>
+              <td>
+                <!-- print user's name here -->
+                <?= $post["user_name"]; ?>
               </td>
               <td class="text-end">
                 <div class="buttons">
